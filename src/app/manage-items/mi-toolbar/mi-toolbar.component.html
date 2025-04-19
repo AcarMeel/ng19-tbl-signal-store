@@ -1,6 +1,8 @@
 <div class="mi-toolbar">
   <div class="mi-toolbar-left">
-    <app-filter-dropdown />
+    <app-filter-dropdown [defaultFilterSelected]="miStore.filter()"
+    [totalResults]="miStore.totalResults()"
+    (filterChange)="setFilterSelected($event)" />
   </div>
   <div class="mi-toolbar-right">
     <app-download-report />

@@ -1,0 +1,34 @@
+header.nav-header {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--mat-sys-primary);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    gap: 24px;
+  }
+
+  .navbar-option {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}

@@ -1,0 +1,14 @@
+#mi-table {
+  th {
+    background-color: var(--mat-sys-surface-tint);
+    color: #eee;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 0.5px solid white;
+
+    &#th-select {
+      background-color: var(--mat-sys-surface);
+    }
+  }
+
+}

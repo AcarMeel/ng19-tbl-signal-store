@@ -16,3 +16,16 @@ export function emptyStateMessageFactory(): (filter: string) => string {
     }
   };
 }
+
+export function emptyPetMessageFactory(): (filter: string) => string {
+  return (filter) => {
+    switch (filter) {
+      case 'ALL':
+        return `We're sorry. We run out of pet items.`;
+      case 'FAV':
+        return 'Oops! You have no favorite pet items yet!';
+      default:
+        return 'Select a filter to see pet items';
+    }
+  };
+}

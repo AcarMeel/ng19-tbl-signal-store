@@ -3,13 +3,15 @@ import { DownloadReportComponent } from './download-report/download-report.compo
 import { FilterDropdownComponent } from './filter-dropdown/filter-dropdown.component';
 import { PageSizeComponent } from './page-size/page-size.component';
 import { MIDataStore } from '../store/data.store';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-mi-toolbar',
     imports: [
         DownloadReportComponent,
         FilterDropdownComponent,
-        PageSizeComponent
+        PageSizeComponent,
+        CommonModule
     ],
     templateUrl: './mi-toolbar.component.html',
     styleUrl: './mi-toolbar.component.scss'

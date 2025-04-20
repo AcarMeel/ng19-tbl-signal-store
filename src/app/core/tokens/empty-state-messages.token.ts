@@ -22,8 +22,10 @@ export function emptyPetMessageFactory(): (filter: string) => string {
     switch (filter) {
       case 'ALL':
         return `We're sorry. We run out of pet items.`;
-      case 'FAV':
+      case 'FAVE':
         return 'Oops! You have no favorite pet items yet!';
+      case 'PREV':
+        return 'Oops! You have no previous pet items!';
       default:
         return 'Select a filter to see pet items';
     }

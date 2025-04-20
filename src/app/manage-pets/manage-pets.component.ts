@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FilterDropdownComponent } from '../manage-items/mi-toolbar/filter-dropdown/filter-dropdown.component';
 import { EMPTY_STATE_MESSAGES } from '../core/tokens/empty-state-messages.token';
+import { FILTER_OPT_DROPDOWN } from '../core/tokens/filter-options.token';
 
 @Component({
   selector: 'app-manage-pets',

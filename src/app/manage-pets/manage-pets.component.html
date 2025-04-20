@@ -1,5 +1,12 @@
-<app-filter-dropdown defaultFilterSelected="ALL"
-    [totalResults]="0"
-    (filterChange)="setFilterSelected($event)" />
+<div class="mp-filters">
+    <div class="mp-filter">
+        <app-filter-dropdown defaultFilterSelected="ALL" [totalResults]="0"
+            (filterChange)="setFilterSelected($event)" />
 
-<p>{{ message }}</p>
+        <p>{{ message }}</p>
+    </div>
+    <div class="mp-filter">
+        <app-filter-dropdown defaultFilterSelected="ALL" [totalResults]="0"
+        filterParam="accesories" />
+    </div>
+</div>

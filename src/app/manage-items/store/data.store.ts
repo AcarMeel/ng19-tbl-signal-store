@@ -28,7 +28,6 @@ export const MIDataStore = signalStore(
             patchState(store, () => ({ filter }))
         },
         setSelectedRows(rows: Array<IItem>): void {
-          console.log('set rows selected ', rows)
           patchState(store, () => ({ selectedRows: rows }))
         }
     })),
@@ -38,7 +37,6 @@ export const MIDataStore = signalStore(
     withHooks({
         onInit(store) {
             effect(() => { // llamar API
-                console.log('Ejecutando effect')
                 const filter = store.filter();
                 if (filter === 'ALL') {
                     store.setItems(MOCK_ITEMS);

@@ -48,7 +48,8 @@
     <!-- (click)="selection.toggle(row)" -->
   </tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of items" (page)="pageChange()"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of items"
+(page)="pageChange()" [showFirstLastButtons]="false"></mat-paginator>
 
 @if (totalResults === 0) {
   <p>

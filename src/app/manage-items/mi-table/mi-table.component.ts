@@ -1,6 +1,7 @@
-import { Component, inject, effect, EffectRef } from '@angular/core';
+import { Component, inject, effect, EffectRef, ViewChild, AfterViewInit } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSort, MatSortModule} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MIDataStore } from '../store/data.store';
 import { IItem } from '../../core/interfaces/item.interface';
@@ -10,17 +11,18 @@ import { EMPTY_STATE_MESSAGES } from '../../core/tokens/empty-state-messages.tok
 
 @Component({
   selector: 'app-mi-table',
-  imports: [MatTableModule, MatCheckboxModule, CommonModule],
+  imports: [MatTableModule, MatCheckboxModule, CommonModule, MatSortModule],
   templateUrl: './mi-table.component.html',
   styleUrl: './mi-table.component.scss'
 })
-export class MiTableComponent {
+export class MiTableComponent implements AfterViewInit {
   readonly miStore = inject(MIDataStore);
   readonly emptyMessage = inject(EMPTY_STATE_MESSAGES);
   selection = new SelectionModel<IItem>(true, []);
   dataSource = new MatTableDataSource<IItem>([]);
   filterSelected = '';
   totalResults = 0;
+  @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   effect: EffectRef = effect(() => {
     const data = this.miStore.data()
@@ -33,6 +35,10 @@ export class MiTableComponent {
     this.filterSelected = filterName;
     this.totalResults = count;
   });
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;

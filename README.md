@@ -12,6 +12,7 @@ Features to implement:
 
 - Switch between theme modes
 - signal store in localstorage
+- Testing
 
 
 ManageItemsPageComponent (la ruta)

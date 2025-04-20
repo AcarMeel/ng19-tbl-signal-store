@@ -1,4 +1,4 @@
-<table id="mi-table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table id="mi-table" mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -20,19 +20,19 @@
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <!-- Status Column -->
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
     <td mat-cell *matCellDef="let element"> {{element.status}} </td>
   </ng-container>
 
   <!-- Date Column -->
   <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
     <td mat-cell *matCellDef="let element"> {{element.date}} </td>
   </ng-container>
 
@@ -44,7 +44,8 @@
 
   <tr mat-header-row *matHeaderRowDef="miStore.displayedColumns()"></tr>
   <tr mat-row *matRowDef="let row; columns: miStore.displayedColumns();"
-      (click)="selection.toggle(row)">
+    >
+    <!-- (click)="selection.toggle(row)" -->
   </tr>
 </table>
 
@@ -54,6 +55,3 @@
     {{ emptyMessage(filterSelected) }}
   </p>
 }
-
-
-{{ miStore.selectedRows() | json }}

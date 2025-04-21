@@ -38,6 +38,7 @@ export const MIDataStore = signalStore(
         onInit(store) {
             effect(() => { // llamar API
                 const filter = store.filter();
+                store.setSelectedRows([]);
                 if (filter === 'ALL') {
                     store.setItems(MOCK_ITEMS);
                 } else if (filter === 'FAV') {

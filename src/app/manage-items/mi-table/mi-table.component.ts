@@ -27,7 +27,12 @@ export class MiTableComponent implements AfterViewInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator();
 	@ViewChild(MatSort) sort: MatSort = new MatSort();
 
-
+  reloadPagination = computed(() => {
+    const dependency = this.miStore.data();
+    const pageIndex = this.dataSource.paginator?.pageIndex || 0;
+		const pageSize = this.dataSource.paginator?.pageSize || 5;
+    return [...this.dataSource.data]?.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
+  });
 
 	effect: EffectRef = effect(() => {
 		const data = this.miStore.data()
@@ -41,12 +46,15 @@ export class MiTableComponent implements AfterViewInit {
 		this.totalResults = count;
 	});
 
-
+  effectPagination: EffectRef = effect(() => {
+    this.selection.clear();
+    this.paginateData.set(this.reloadPagination());
+  });
 
 	ngAfterViewInit() {
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
-        this.setPagination();
+    this.setPagination();
 	}
 
 	isAllSelected() {
